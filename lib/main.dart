@@ -41,7 +41,12 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(child: Container(child: Text("Welcome to flutter web",
+          style: TextStyle(fontSize: 30, color: Colors.blue),),),
+        ),
+      ),
     );
   }
 }
