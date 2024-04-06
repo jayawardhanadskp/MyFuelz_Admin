@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myfuelz_admin/views/home_page.dart';
 
+
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (kIsWeb) {
