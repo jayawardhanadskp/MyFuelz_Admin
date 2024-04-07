@@ -2,6 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myfuelz_admin/views/home_page.dart';
+import 'package:myfuelz_admin/views/screens/login_screen.dart';
+import 'package:myfuelz_admin/views/screens/splash_screen.dart';
+
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,7 +43,20 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home:  HomePage(),
+
+      initialRoute: SplashScreen.id,
+
+      routes: {
+    SplashScreen.id : (context) => SplashScreen(),
+    LoginScreen.id :(context) => LoginScreen()
+    },
+
+    debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(child: Container(child: Text("Welcome to flutter web",
+          style: TextStyle(fontSize: 30, color: Colors.blue),),),
+        ),
+      ),
     );
   }
 }
