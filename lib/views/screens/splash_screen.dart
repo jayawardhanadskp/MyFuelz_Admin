@@ -1,25 +1,31 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:myfuelz_admin/views/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({required Key key}) : super(key: key);
+  static const String id ="splash-screen";
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+
+
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 5), () => Navigator.pushReplacementNamed(context, '/routeName'));
+    Timer(Duration(seconds: 3), () => Navigator.pushReplacementNamed(context, LoginScreen.id));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset("assets/images/admin.png"),
+        child: Container(
+        height: 500,
+        width: 500,
+        child: Image.asset("assets/images/webadmin.png")),
       ),
     );
   }
