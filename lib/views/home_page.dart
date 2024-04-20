@@ -7,8 +7,10 @@ import 'package:flutter_admin_scaffold/admin_scaffold.dart';
 import 'screens/banners.dart';
 import 'screens/customers.dart';
 import 'screens/dashbord.dart';
+import 'screens/feedbacks.dart';
 import 'screens/orders.dart';
 import 'screens/tankers.dart';
+import 'screens/reports.dart';
 
 class HomePage extends StatefulWidget {
   static const String id ="home_page";
@@ -19,7 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-  Widget _selectedItem = const DashboardScreen();
+  Widget _selectedItem =  DashboardScreen();
 
   String _selectedRoute = DashboardScreen.routeName;
   bool _isSidebarOpen = true;
@@ -29,7 +31,7 @@ class _HomePageState extends State<HomePage> {
     switch (item.route) {
       case DashboardScreen.routeName:
         setState(() {
-          _selectedItem = const DashboardScreen();
+          _selectedItem =  DashboardScreen();
           _selectedRoute = DashboardScreen.routeName;
         });
 
@@ -37,7 +39,7 @@ class _HomePageState extends State<HomePage> {
 
       case Customers.routeName:
         setState(() {
-          _selectedItem = const Customers();
+          _selectedItem =  Customers();
           _selectedRoute = Customers.routeName;
         });
 
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
       case Tankers.routeName:
         setState(() {
-          _selectedItem = const Tankers();
+          _selectedItem =  Tankers();
           _selectedRoute = Tankers.routeName;
         });
 
@@ -53,7 +55,7 @@ class _HomePageState extends State<HomePage> {
 
       case Orders.routeName:
         setState(() {
-          _selectedItem = const Orders();
+          _selectedItem =  Orders();
           _selectedRoute = Orders.routeName;
         });
 
@@ -61,11 +63,28 @@ class _HomePageState extends State<HomePage> {
 
       case Banners.routeName:
         setState(() {
-          _selectedItem = const Banners();
+          _selectedItem =  Banners();
           _selectedRoute = Banners.routeName;
         });
 
         break;
+
+        case FeedbackPage.routeName:
+        setState(() {
+          _selectedItem = FeedbackPage();
+          _selectedRoute = FeedbackPage.routeName;
+        });
+
+        break;
+
+        case ReportsPage.routeName:
+        setState(() {
+          _selectedItem = ReportsPage();
+          _selectedRoute = ReportsPage.routeName;
+        });
+
+        break;
+
     }
   }
 
@@ -119,6 +138,14 @@ class _HomePageState extends State<HomePage> {
                       title: 'Banner Upload',
                       icon: CupertinoIcons.add,
                       route: Banners.routeName),
+                  AdminMenuItem(
+                      title: 'App Feedbacks',
+                      icon: Icons.feedback,
+                      route: FeedbackPage.routeName),
+                  AdminMenuItem(
+                      title: 'Reports',
+                      icon: Icons.report,
+                      route: ReportsPage.routeName),
                 ],
                 selectedRoute: _selectedRoute,
                 onSelected: (item) {

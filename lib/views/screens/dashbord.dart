@@ -13,6 +13,16 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+      ),
+      body: Column(
+        children: [
+          Image.asset('assets/images/dashbord.jpeg')
+        ],
+      ),
+      
+    );
   }
 }

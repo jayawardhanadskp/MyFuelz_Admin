@@ -142,6 +142,7 @@ class _TankersState extends State<Tankers> {
             DataColumn(label: Text('Phone')),
             DataColumn(label: Text('Orders')),
             DataColumn(label: Text('Avg. Rating')),
+            DataColumn(label: Text('Notification')),
           ],
           rows: filteredTankers.map<DataRow>((tanker) {
             return DataRow(cells: [
@@ -172,10 +173,59 @@ class _TankersState extends State<Tankers> {
                   },
                 ),
               ),
+              DataCell(IconButton(
+                icon: const Icon(Icons.message, color: Colors.black45,),
+                onPressed: () {
+                  _showMessageDialog(context, tanker.uid);
+                },
+              )),
             ]);
           }).toList(),
         ),
       ),
     );
   }
+}
+
+// function to show message dialog
+void _showMessageDialog(BuildContext context, String customerId) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      String message = '';
+
+      return AlertDialog(
+        title: const Text('Send Notification'),
+        content: TextField(
+          onChanged: (value) {
+            message = value;
+          },
+          decoration: const InputDecoration(hintText: 'Type your Notification'),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () async {
+              // get current timestamp
+              var timestamp = DateTime.now();
+
+              // save message to Firebase collection
+              try {
+                await FirebaseFirestore.instance.collection('admin_messages').add({
+                  'userId': customerId,
+                  'message': message,
+                  'timestamp': timestamp,
+                });
+                print('Message sent successfully.');
+              } catch (error) {
+                print('Error sending message: $error');
+              }
+
+              Navigator.of(context).pop();
+            },
+            child: const Text('Send'),
+          ),
+        ],
+      );
+    },
+  );
 }
