@@ -96,12 +96,12 @@ class _CustomersState extends State<Customers> {
 
   @override
   Widget build(BuildContext context) {
-
     List<User> filteredUsers = users.where((user) => user.role == 'User').toList();
+    int totalCustomers = filteredUsers.length;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Customers'),
+        title: Text('Total Customers ($totalCustomers)'),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
@@ -139,6 +139,7 @@ class _CustomersState extends State<Customers> {
       ),
     );
   }
+
 }
 
 // function to show message dialog
