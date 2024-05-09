@@ -19,7 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
       ),
       body: Column(
         children: [
-          Image.asset('assets/images/dashbord.jpeg')
+          Image.asset('assets/images/dashbord.jpeg',)
         ],
       ),
       
