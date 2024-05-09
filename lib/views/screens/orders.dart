@@ -62,13 +62,13 @@ class _OrdersState extends State<Orders> {
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
+    int totalOrders = orders.length;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Orders'),
+        title: Text('Orders ($totalOrders)'),
       ),
       body: SingleChildScrollView(
         child: DataTable(
