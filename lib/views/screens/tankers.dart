@@ -127,10 +127,11 @@ class _TankersState extends State<Tankers> {
   Widget build(BuildContext context) {
     List<User> filteredTankers =
     tankers.where((tanker) => tanker.role == 'Tanker').toList();
+    int totalTankers = filteredTankers.length;
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tankers'),
+        title: Text('Total Tankers ($totalTankers)'),
       ),
       body: SingleChildScrollView(
         scrollDirection: Axis.horizontal,
